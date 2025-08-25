@@ -10,6 +10,12 @@ export default function Home() {
     window.location.href = url;
   };
 
+  const reviews = [
+    "These wipes brought my grips back to life.",
+    "No more slipping, feels brand new.",
+    "Perfect size for the bag, I use them every round."
+  ];
+
   return (
     <main className="bg-neutral-950 text-neutral-50 min-h-screen">
       {/* Hero Section */}
@@ -40,4 +46,24 @@ export default function Home() {
           <div>
             <CheckCircle className="w-10 h-10 text-emerald-500 mx-auto mb-4" />
             <h3 className="text-xl font-bold mb-2">30 wipes per pack</h3>
-            <p className="text-neutral-400">Resealable pouch sized fo
+            <p className="text-neutral-400">Resealable pouch sized for the golf bag.</p>
+          </div>
+          <div>
+            <CheckCircle className="w-10 h-10 text-emerald-500 mx-auto mb-4" />
+            <h3 className="text-xl font-bold mb-2">No residue finish</h3>
+            <p className="text-neutral-400">Cleans grips without leaving slick film.</p>
+          </div>
+          <div>
+            <CheckCircle className="w-10 h-10 text-emerald-500 mx-auto mb-4" />
+            <h3 className="text-xl font-bold mb-2">Fresh scent</h3>
+            <p className="text-neutral-400">Fast drying formula with clean smell.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews */}
+      <section className="py-20 max-w-6xl mx-auto px-6 text-center">
+        <h2 className="text-4xl font-bold mb-10">What golfers are saying</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {reviews.map((quote, i) => (
+            <div
