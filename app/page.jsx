@@ -10,7 +10,7 @@ export default function Home() {
     window.location.href = url;
   };
 
-  // ✅ Safe review strings — no nested quotes, no syntax errors
+  // Reviews
   const reviews = [
     "These wipes brought my grips back to life.",
     "No more slipping, feels brand new.",
@@ -68,7 +68,6 @@ export default function Home() {
         <div className="grid md:grid-cols-3 gap-8">
           {reviews.map((quote, i) => (
             <div key={i} className="bg-neutral-900 rounded-xl p-6 shadow-lg">
-              {/* Render 5 stars safely */}
               {[...Array(5)].map((_, j) => (
                 <Star
                   key={j}
