@@ -1,11 +1,14 @@
+import "./globals.css";
+
 export const metadata = {
   title: "Grip Wipes",
-  description: "No residue. No slip. All grip.",
+  description: "Rip. Clean. Tack. Repeat.",
 };
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-neutral-950 text-white">{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
