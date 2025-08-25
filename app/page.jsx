@@ -10,6 +10,7 @@ export default function Home() {
     window.location.href = url;
   };
 
+  // ✅ Safe review strings — no nested quotes, no syntax errors
   const reviews = [
     "These wipes brought my grips back to life.",
     "No more slipping, feels brand new.",
@@ -66,4 +67,53 @@ export default function Home() {
         <h2 className="text-4xl font-bold mb-10">What golfers are saying</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {reviews.map((quote, i) => (
-            <div
+            <div key={i} className="bg-neutral-900 rounded-xl p-6 shadow-lg">
+              {/* Render 5 stars safely */}
+              {[...Array(5)].map((_, j) => (
+                <Star
+                  key={j}
+                  className="text-yellow-400 w-5 h-5 inline-block mr-1"
+                />
+              ))}
+              <p className="text-neutral-300 mt-4">{quote}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-neutral-900 py-20">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-4xl font-bold mb-10 text-center">FAQ</h2>
+          <div className="space-y-6">
+            <div>
+              <h3 className="flex items-center gap-2 font-semibold text-lg">
+                <HelpCircle className="w-5 h-5" />
+                How many wipes come in a pack?
+              </h3>
+              <p className="text-neutral-400 ml-7">Each pack has 30 resealable wipes.</p>
+            </div>
+            <div>
+              <h3 className="flex items-center gap-2 font-semibold text-lg">
+                <HelpCircle className="w-5 h-5" />
+                Will this leave my grips sticky?
+              </h3>
+              <p className="text-neutral-400 ml-7">
+                No residue or slick film — just tacky, playable grips.
+              </p>
+            </div>
+            <div>
+              <h3 className="flex items-center gap-2 font-semibold text-lg">
+                <HelpCircle className="w-5 h-5" />
+                Can I use them on any grip?
+              </h3>
+              <p className="text-neutral-400 ml-7">
+                Yes, safe for rubber, cord, and poly blend grips.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
