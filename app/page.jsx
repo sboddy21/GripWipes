@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <main className="bg-neutral-950 text-neutral-50 min-h-screen">
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 items-center gap-12">
         <div className="text-center md:text-left">
           <motion.h1
@@ -41,8 +41,6 @@ export default function Home() {
             Shop now
           </button>
         </div>
-
-        {/* ✅ Hero Image */}
         <div className="flex justify-center">
           <Image
             src="/mock-package.jpg"
@@ -56,7 +54,7 @@ export default function Home() {
       </section>
 
       {/* Features */}
-      <section className="bg-neutral-900 py-20">
+      <section id="features" className="bg-neutral-900 py-20">
         <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-3 gap-10 text-center">
           <div>
             <CheckCircle className="w-10 h-10 text-emerald-500 mx-auto mb-4" />
@@ -77,16 +75,13 @@ export default function Home() {
       </section>
 
       {/* Reviews */}
-      <section className="py-20 max-w-6xl mx-auto px-6 text-center">
+      <section id="reviews" className="py-20 max-w-6xl mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold mb-10">What golfers are saying</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {reviews.map((quote, i) => (
             <div key={i} className="bg-neutral-900 rounded-xl p-6 shadow-lg">
               {[...Array(5)].map((_, j) => (
-                <Star
-                  key={j}
-                  className="text-yellow-400 w-5 h-5 inline-block mr-1"
-                />
+                <Star key={j} className="text-yellow-400 w-5 h-5 inline-block mr-1" />
               ))}
               <p className="text-neutral-300 mt-4">{quote}</p>
             </div>
@@ -95,7 +90,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-neutral-900 py-20">
+      <section id="faq" className="bg-neutral-900 py-20">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-4xl font-bold mb-10 text-center">FAQ</h2>
           <div className="space-y-6">
@@ -125,6 +120,32 @@ export default function Home() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Shop Section */}
+      <section id="shop" className="py-20 max-w-3xl mx-auto px-6">
+        <div className="bg-neutral-900 rounded-xl p-8 shadow-lg text-center">
+          <Image
+            src="/mock-package.jpg"
+            alt="Grip Wipes 30 Pack"
+            width={300}
+            height={300}
+            className="mx-auto mb-6 rounded-lg"
+          />
+          <h3 className="text-2xl font-bold mb-2">Grip Wipes 30 Pack</h3>
+          <p className="text-neutral-400 mb-4">
+            Resealable pouch with 30 wipes. Cleans grips fast, dries quick,
+            no residue, adds tack, fresh scent.
+          </p>
+          <p className="text-emerald-400 font-bold text-xl mb-6">$21.99</p>
+          <button
+            onClick={goCheckout}
+            className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-6 py-3 font-semibold text-neutral-950 hover:bg-emerald-400 active:scale-[.98]"
+          >
+            <ShoppingCart className="w-5 h-5" />
+            Add to cart
+          </button>
         </div>
       </section>
     </main>

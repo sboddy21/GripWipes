@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,10 +13,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} bg-neutral-950 text-neutral-50`}>
-        {/* ✅ Navbar */}
+        {/* Navbar */}
         <header className="sticky top-0 z-50 bg-neutral-950/80 backdrop-blur border-b border-neutral-800">
           <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <span className="font-extrabold text-xl tracking-tight">Grip Wipes</span>
+            <a href="/" className="flex items-center gap-2">
+              <Image
+                src="/logo.png"
+                alt="Grip Wipes Logo"
+                width={40}
+                height={40}
+                priority
+              />
+              <span className="font-extrabold text-xl tracking-tight">Grip Wipes</span>
+            </a>
             <ul className="flex gap-8 text-sm font-medium">
               <li><a href="#features" className="hover:text-emerald-400">Features</a></li>
               <li><a href="#reviews" className="hover:text-emerald-400">Reviews</a></li>
@@ -32,10 +42,9 @@ export default function RootLayout({ children }) {
           </nav>
         </header>
 
-        {/* Main content */}
         {children}
 
-        {/* ✅ Footer */}
+        {/* Footer */}
         <footer className="mt-20 border-t border-neutral-800 bg-neutral-950">
           <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-neutral-500 text-sm">
