@@ -13,9 +13,12 @@ export default function RootLayout({ children }) {
         {/* Header / Navbar */}
         <header className="border-b border-gray-800">
           <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
+            {/* Logo / Home */}
             <Link href="/" className="text-2xl font-bold">
               Grip Wipes
             </Link>
+
+            {/* Nav Links */}
             <nav className="flex space-x-6">
               <Link href="/#features" className="hover:text-green-500">
                 Features
@@ -32,7 +35,10 @@ export default function RootLayout({ children }) {
               <Link href="/wholesale" className="hover:text-green-500">
                 Wholesale
               </Link>
-              <Link href="/shop" className="bg-green-600 px-4 py-2 rounded hover:bg-green-700">
+              <Link
+                href="/shop"
+                className="bg-green-600 px-4 py-2 rounded hover:bg-green-700"
+              >
                 Shop
               </Link>
             </nav>
