@@ -13,6 +13,20 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} bg-black text-white`}>
+        <header className="sticky top-0 z-50">
+  {/* Free Shipping Bar */}
+  <div className="bg-emerald-600 text-black text-sm font-semibold text-center py-2">
+    🚚 Free shipping on orders over $50 (USA only)
+  </div>
+
+  {/* Navbar */}
+  <div className="bg-neutral-950/70 backdrop-blur-lg border-b border-neutral-800">
+    <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      {/* ... existing nav code ... */}
+    </nav>
+  </div>
+</header>
+        
         {/* NAVBAR */}
         <header className="sticky top-0 z-50 bg-neutral-950/70 backdrop-blur-lg border-b border-neutral-800">
           <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
