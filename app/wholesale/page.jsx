@@ -18,8 +18,8 @@ export default function Wholesale() {
 
       const data = await res.json();
       if (data.success) {
-        setStatus("Message sent successfully!");
-        setForm({ name: "", business: "", email: "", message: "" });
+        // Redirect to success page
+        window.location.href = "/wholesale/success";
       } else {
         setStatus("Something went wrong. Please try again.");
       }
