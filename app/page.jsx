@@ -30,15 +30,13 @@ export default function Home() {
   return (
     <main className="bg-black text-white min-h-screen flex flex-col">
       {/* Navbar */}
-      <nav className="flex justify-between items-center p-6 bg-black sticky top-0 z-50 border-b border-neutral-800">
-        <div className="font-bold text-lg">Grip Wipes</div>
-        <div className="space-x-6">
-          <a href="#features" className="hover:text-green-400">Features</a>
-          <a href="#reviews" className="hover:text-green-400">Reviews</a>
-          <a href="#faq" className="hover:text-green-400">FAQ</a>
-          <a href="#shop" className="bg-green-500 text-black px-4 py-2 rounded hover:bg-green-400">Shop</a>
-        </div>
-      </nav>
+      <nav className="flex items-center gap-6">
+  <a href="#features" className="hover:text-green-400">Features</a>
+  <a href="#reviews" className="hover:text-green-400">Reviews</a>
+  <a href="#faq" className="hover:text-green-400">FAQ</a>
+  <a href="/about" className="hover:text-green-400">About Us</a>
+  <a href="#shop" className="bg-green-500 text-black px-4 py-2 rounded hover:bg-green-400">Shop</a>
+</nav>
 
       {/* Hero Section */}
       <section className="flex flex-col md:flex-row items-center justify-between px-10 py-20">
