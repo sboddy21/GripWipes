@@ -5,24 +5,33 @@ export async function POST(req) {
   try {
     const { name, business, email, message } = await req.json();
 
-    // Transporter setup (using Gmail as example)
+    // Outlook SMTP setup
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.office365.com",
+      port: 587,
+      secure: false, // use TLS
       auth: {
-        user: process.env.EMAIL_USER, // your email
-        pass: process.env.EMAIL_PASS, // app password
+        user: process.env.EMAIL_USER, // gripwipes@outlook.com
+        pass: process.env.EMAIL_PASS, // Outlook App Password
       },
     });
 
     await transporter.sendMail({
       from: `"Grip Wipes Wholesale" <${process.env.EMAIL_USER}>`,
-      to: "sales@getgripwipes.com", // where you want to receive inquiries
+      to: "gripwipes@outlook.com", // where inquiries are sent
       subject: "New Wholesale Inquiry - Grip Wipes",
       text: `
         Name: ${name}
         Business: ${business}
         Email: ${email}
         Message: ${message}
+      `,
+      html: `
+        <h2>New Wholesale Inquiry</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Business:</strong> ${business}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong> ${message}</p>
       `,
     });
 
