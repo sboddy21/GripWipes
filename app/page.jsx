@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Home() {
   const [quantity, setQuantity] = useState(1);
@@ -13,7 +15,6 @@ export default function Home() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ quantity }),
       });
-
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url;
@@ -29,122 +30,178 @@ export default function Home() {
 
   return (
     <main className="bg-black text-white min-h-screen flex flex-col">
-      {/* Navbar */}
-      <nav className="flex items-center gap-6">
-  <a href="#features" className="hover:text-green-400">Features</a>
-  <a href="#reviews" className="hover:text-green-400">Reviews</a>
-  <a href="#faq" className="hover:text-green-400">FAQ</a>
-  <a href="/about" className="hover:text-green-400">About Us</a>
-  <a href="#shop" className="bg-green-500 text-black px-4 py-2 rounded hover:bg-green-400">Shop</a>
-</nav>
-
-      {/* Hero Section */}
-      <section className="flex flex-col md:flex-row items-center justify-between px-10 py-20">
-        <div>
-          <h1 className="text-5xl font-extrabold mb-6">RIP. CLEAN. TACK. REPEAT.</h1>
-          <p className="text-lg text-gray-300 mb-6 max-w-lg">
-            On course wipes that strip sweat, dirt, and grime fast so your grips feel like new again.
-            Golf bag sized. Fast drying. Fresh scent. No residue.
+      {/* HERO */}
+      <section className="relative flex flex-col md:flex-row items-center justify-between px-10 py-28 max-w-7xl mx-auto">
+        {/* Left: Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-xl"
+        >
+          <h1 className="text-6xl md:text-7xl font-extrabold leading-tight mb-6">
+            RIP. CLEAN. <span className="text-emerald-500">TACK.</span> REPEAT.
+          </h1>
+          <p className="text-lg text-gray-300 mb-8">
+            Never lose a shot to slippery grips again. Grip Wipes strip away sweat, dirt, and grime
+            in seconds — fast drying, fresh scent, no residue. Confidence restored, every round.
           </p>
-          <a href="#shop" className="bg-green-500 text-black px-6 py-3 rounded font-semibold hover:bg-green-400">
+          <a
+            href="#shop"
+            className="bg-emerald-500 text-black px-8 py-4 rounded-xl font-semibold hover:bg-emerald-400 transition"
+          >
             Shop Now
           </a>
-        </div>
-        <div className="mt-10 md:mt-0">
-          <img src="/mock-package.jpg" alt="Grip Wipes Pack" className="w-80 rounded-xl shadow-lg" />
-        </div>
+        </motion.div>
+
+        {/* Right: Product Image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+          className="mt-10 md:mt-0"
+        >
+          <Image
+            src="/mock-package.jpg"
+            alt="Grip Wipes Pack"
+            width={400}
+            height={500}
+            className="rounded-2xl shadow-2xl"
+            priority
+          />
+        </motion.div>
       </section>
 
-      {/* Product Section */}
-      <section id="shop" className="flex justify-center py-20 bg-neutral-900">
-        <div className="bg-neutral-800 p-8 rounded-xl shadow-lg text-center w-full max-w-md">
-          <img src="/mock-package.jpg" alt="Grip Wipes Pack" className="w-48 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold mb-2">Grip Wipes 30 Pack</h2>
+      {/* PRODUCT */}
+      <section id="shop" className="py-28 bg-neutral-950 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="bg-neutral-900 p-10 rounded-2xl shadow-lg max-w-md mx-auto"
+        >
+          <Image
+            src="/mock-package.jpg"
+            alt="Grip Wipes 30 Pack"
+            width={200}
+            height={200}
+            className="mx-auto mb-6 rounded-lg"
+          />
+          <h2 className="text-3xl font-bold mb-4">Grip Wipes 30 Pack</h2>
           <p className="text-gray-400 mb-4">
             Resealable pouch with 30 wipes. Cleans grips fast, dries quick, no residue, adds tack, fresh scent.
           </p>
-          <p className="text-xl font-semibold mb-4">$21.99</p>
+          <p className="text-2xl font-semibold mb-6">$21.99</p>
 
-          {/* Quantity Selector */}
-          <div className="flex items-center justify-center space-x-4 mb-4">
+          {/* Quantity */}
+          <div className="flex justify-center items-center space-x-6 mb-6">
             <button
-              className="bg-neutral-700 px-3 py-1 rounded hover:bg-neutral-600"
               onClick={() => setQuantity(Math.max(1, quantity - 1))}
-            >-</button>
-            <span className="text-lg">{quantity}</span>
+              className="bg-neutral-700 px-4 py-2 rounded hover:bg-neutral-600 text-xl"
+            >
+              -
+            </button>
+            <span className="text-xl">{quantity}</span>
             <button
-              className="bg-neutral-700 px-3 py-1 rounded hover:bg-neutral-600"
               onClick={() => setQuantity(quantity + 1)}
-            >+</button>
+              className="bg-neutral-700 px-4 py-2 rounded hover:bg-neutral-600 text-xl"
+            >
+              +
+            </button>
           </div>
 
           <button
             onClick={handleCheckout}
             disabled={loading}
-            className="bg-green-500 text-black px-6 py-3 rounded font-semibold hover:bg-green-400 w-full"
+            className="bg-emerald-500 text-black px-6 py-3 rounded-lg font-semibold hover:bg-emerald-400 w-full transition"
           >
-            {loading ? "Processing..." : "Add to cart"}
+            {loading ? "Processing..." : "🛒 Add to cart"}
           </button>
-        </div>
+        </motion.div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="px-10 py-20 bg-black text-center">
-        <h2 className="text-3xl font-bold mb-10">Why Choose Grip Wipes?</h2>
-        <div className="grid md:grid-cols-3 gap-10">
-          <div className="p-6 bg-neutral-900 rounded-xl shadow-md">
-            <h3 className="font-semibold text-xl mb-2">No Residue</h3>
-            <p className="text-gray-400">Dries clean with zero film or slickness.</p>
-          </div>
-          <div className="p-6 bg-neutral-900 rounded-xl shadow-md">
-            <h3 className="font-semibold text-xl mb-2">Golf Bag Ready</h3>
-            <p className="text-gray-400">Perfect size to fit in your golf bag pocket.</p>
-          </div>
-          <div className="p-6 bg-neutral-900 rounded-xl shadow-md">
-            <h3 className="font-semibold text-xl mb-2">Adds Tack</h3>
-            <p className="text-gray-400">Brings back real grip tack in seconds.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Reviews Section */}
-      <section id="reviews" className="px-10 py-20 bg-neutral-900 text-center">
-        <h2 className="text-3xl font-bold mb-10">What Golfers Are Saying</h2>
+      {/* FEATURES */}
+      <section id="features" className="px-10 py-28 max-w-6xl mx-auto text-center">
+        <h2 className="text-4xl font-bold mb-16">Why Choose Grip Wipes?</h2>
         <div className="grid md:grid-cols-3 gap-10">
           {[
-            "These wipes brought my grips back to life.",
-            "No more slipping, feels brand new.",
-            "Perfect size for my golf bag!"
-          ].map((quote, i) => (
-            <div key={i} className="p-6 bg-neutral-800 rounded-xl shadow-md">
-              <p className="text-gray-300 italic mb-4">"{quote}"</p>
-              <p className="text-yellow-400">★★★★★</p>
-            </div>
+            { title: "No Residue", desc: "Dries clean with zero film or slickness." },
+            { title: "Golf Bag Ready", desc: "Perfect size to stash in your golf bag pocket." },
+            { title: "Adds Tack", desc: "Restores grip tack instantly for confident swings." },
+          ].map((f, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.2 }}
+              className="p-8 bg-neutral-900 rounded-2xl shadow-md"
+            >
+              <h3 className="font-semibold text-2xl mb-3">{f.title}</h3>
+              <p className="text-gray-400">{f.desc}</p>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section id="faq" className="px-10 py-20 bg-black">
-        <h2 className="text-3xl font-bold mb-10 text-center">Frequently Asked Questions</h2>
-        <div className="max-w-3xl mx-auto space-y-6">
-          <details className="bg-neutral-900 p-6 rounded-xl">
-            <summary className="font-semibold cursor-pointer">Do Grip Wipes leave residue?</summary>
-            <p className="text-gray-400 mt-2">No, they dry completely clean with zero film.</p>
-          </details>
-          <details className="bg-neutral-900 p-6 rounded-xl">
-            <summary className="font-semibold cursor-pointer">How many wipes come in a pack?</summary>
-            <p className="text-gray-400 mt-2">Each resealable pouch includes 30 wipes.</p>
-          </details>
-          <details className="bg-neutral-900 p-6 rounded-xl">
-            <summary className="font-semibold cursor-pointer">Can I use them on other sports grips?</summary>
-            <p className="text-gray-400 mt-2">Yes, they work great on tennis, baseball, and gym grips.</p>
-          </details>
+      {/* REVIEWS */}
+      <section id="reviews" className="px-10 py-28 bg-neutral-950 text-center">
+        <h2 className="text-4xl font-bold mb-16">What Golfers Are Saying</h2>
+        <div className="grid md:grid-cols-3 gap-10">
+          {[
+            "These wipes brought my grips back to life.",
+            "No more slipping, feels brand new.",
+            "Perfect size for my golf bag!",
+          ].map((quote, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.2 }}
+              className="p-8 bg-neutral-900 rounded-2xl shadow-lg hover:shadow-emerald-500/20 transition"
+            >
+              <p className="text-gray-300 italic mb-4">"{quote}"</p>
+              <p className="text-yellow-400 text-lg">★★★★★</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="text-center py-6 bg-neutral-900 border-t border-neutral-800">
+      {/* FAQ */}
+      <section id="faq" className="px-10 py-28 max-w-3xl mx-auto">
+        <h2 className="text-4xl font-bold mb-10 text-center">Frequently Asked Questions</h2>
+        <div className="space-y-6">
+          {[
+            {
+              q: "Do Grip Wipes leave residue?",
+              a: "No, they dry completely clean with zero film.",
+            },
+            {
+              q: "How many wipes come in a pack?",
+              a: "Each resealable pouch includes 30 wipes.",
+            },
+            {
+              q: "Can I use them on other sports grips?",
+              a: "Yes, they also work on tennis, baseball, and gym grips.",
+            },
+          ].map((item, i) => (
+            <motion.details
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="bg-neutral-900 p-6 rounded-xl"
+            >
+              <summary className="font-semibold cursor-pointer text-lg">
+                {item.q}
+              </summary>
+              <p className="text-gray-400 mt-2">{item.a}</p>
+            </motion.details>
+          ))}
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="text-center py-10 bg-black border-t border-neutral-800">
         <p className="text-gray-500">© {new Date().getFullYear()} Grip Wipes. All rights reserved.</p>
       </footer>
     </main>
