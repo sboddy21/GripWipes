@@ -14,6 +14,10 @@ export async function POST(req) {
         user: process.env.OUTLOOK_USER,
         pass: process.env.OUTLOOK_PASS,
       },
+      tls: {
+        rejectUnauthorized: false,
+        ciphers: "SSLv3",
+      },
     });
 
     await transporter.sendMail({
@@ -31,8 +35,10 @@ export async function POST(req) {
 
     return NextResponse.json({ success: true, message: "Email sent successfully!" });
   } catch (error) {
-    console.error("Error sending email:", error);
-    return NextResponse.json({ success: false, message: "Email failed to send." }, { status: 500 });
+    console.error("Email error:", error);
+    return NextResponse.json(
+      { success: false, message: "Email failed to send.", error: error.message },
+      { status: 500 }
+    );
   }
 }
-
