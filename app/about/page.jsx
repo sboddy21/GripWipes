@@ -10,32 +10,41 @@ export default function AboutPage() {
         <Image
           src="/logo.png"
           alt="Grip Wipes Logo"
-          width={80}
-          height={80}
-          className="mx-auto mb-8"
+          width={90}
+          height={90}
+          className="mx-auto mb-10"
         />
 
         {/* Headline */}
-        <h1 className="text-5xl font-extrabold mb-6">About Grip Wipes</h1>
+        <h1 className="text-5xl font-extrabold mb-8">Our Story</h1>
 
         {/* Brand Story */}
         <p className="text-lg text-gray-300 leading-relaxed mb-6">
-          Grip Wipes was born on the course — when we realized how much sweat, dirt, sunscreen,
-          and grime destroy grips faster than anything. Nothing ruins confidence in a swing like
-          slipping hands. And nothing available solved the problem quickly and cleanly.  
+          Golf is a game of precision. Every detail matters — your stance, your swing, and most
+          importantly, your connection to the club. But sweat, dirt, and grime ruin that connection,
+          turning confidence into doubt in a single swing. 
         </p>
 
         <p className="text-lg text-gray-300 leading-relaxed mb-6">
-          So we created Grip Wipes: a golf bag–sized solution that restores tack, dries fast,
-          and leaves no residue. From the very first prototype, our mission was simple — help
-          golfers feel fresh, confident, and locked in over every shot. 
+          At <span className="text-emerald-400 font-semibold">Grip Wipes</span>, we set out to fix that.
+          Born on the course, designed by golfers, and tested in real rounds, our wipes deliver
+          instant tack and freshness — no residue, no gimmicks. Just pure performance in every pouch.
         </p>
 
         <p className="text-lg text-gray-300 leading-relaxed mb-10">
-          Today, Grip Wipes is trusted by golfers everywhere. Whether you’re grinding in a
-          tournament or just enjoying a round with friends, you deserve grips that feel brand new.
-          Rip. Clean. Tack. Repeat.
+          What started as a simple solution is now becoming a golf essential. From weekend players
+          to competitive golfers, Grip Wipes are trusted by those who demand consistency, confidence,
+          and control. Because when your hands feel locked in, nothing can shake your game.
         </p>
+
+        {/* Mission Statement */}
+        <div className="bg-neutral-900 p-8 rounded-2xl mb-10 shadow-lg">
+          <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
+          <p className="text-gray-300">
+            To keep golfers confident, round after round, with the cleanest and tackiest grips on the course.  
+            <br />Rip. Clean. Tack. Repeat.
+          </p>
+        </div>
 
         {/* CTA */}
         <Link
