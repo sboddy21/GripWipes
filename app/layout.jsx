@@ -49,8 +49,7 @@ export default function RootLayout({ children }) {
                 </a>
               </li>
               <li>
-                <a href="#about" className="hover:text-emerald-400 transition">
-                  About Us
+                <a href="/about" className="hover:text-emerald-400 transition">About Us</a>
                 </a>
               </li>
               <li>
