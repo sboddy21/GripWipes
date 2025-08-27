@@ -35,12 +35,14 @@ export default function RootLayout({ children }) {
               <Link href="/wholesale" className="hover:text-green-500">
                 Wholesale
               </Link>
-              <Link
-                href="/shop"
+              <a
+                href="https://buy.stripe.com/dRmdR2c0NdUS7oR3iIc3m00"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-green-600 px-4 py-2 rounded hover:bg-green-700"
               >
                 Shop
-              </Link>
+              </a>
             </nav>
           </div>
         </header>
