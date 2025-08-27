@@ -7,22 +7,17 @@ export async function POST(req) {
 
   try {
     let transporter = nodemailer.createTransport({
-      host: "smtp.office365.com",
-      port: 587,
-      secure: false,
+      service: "SendGrid",
       auth: {
-        user: process.env.OUTLOOK_USER,
-        pass: process.env.OUTLOOK_PASS,
-      },
-      tls: {
-        rejectUnauthorized: false,
-        ciphers: "SSLv3",
+        user: "apikey", // required by SendGrid
+        pass: process.env.SENDGRID_API_KEY,
       },
     });
 
     await transporter.sendMail({
-      from: `"Grip Wipes Wholesale" <${process.env.OUTLOOK_USER}>`,
-      to: process.env.OUTLOOK_USER,
+      from: "gripwipes@outlook.com", // must match your verified sender
+      to: "gripwipes@outlook.com",   // where you receive the emails
+      replyTo: email,                // lets you reply directly to customer
       subject: "New Wholesale Inquiry",
       html: `
         <h2>New Wholesale Inquiry</h2>
